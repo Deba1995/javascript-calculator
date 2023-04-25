@@ -112,8 +112,6 @@ function getSecondValue(elem) {
 
 //Check result length
 function checkResultLength() {
-  console.log(screenValue);
-  console.log(typeof (screenValue))
   if (screenValue.toString().length > 8) {
     history.innerHTML = screenValue.toString();
     screen.innerHTML = Number.parseFloat(screenValue).toFixed(5);
