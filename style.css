@@ -1,0 +1,156 @@
+body{
+  margin: 0;
+  border: none;
+  overflow: hidden;
+  background-color: #569DAA;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+:root{
+  --primary-screen: #282A3A;
+  --button-box: #474E68;
+  --box-shadow: #34364a;
+  --keys-operator: #F45050;
+  --active : limegreen;
+  --icon-sun: black;
+  --icon-moon: white;
+  --icon-nav: white;
+  
+}
+
+.container{
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.calculator_outer{
+  max-width: 270px;
+  height: 600px;
+  border-radius: 25px;
+  background-color: var(--primary-screen);
+}
+
+.calculator_top{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+}
+
+.sun{
+  color: var(--icon-sun);
+}
+
+.icon-nav{
+  color: var(--icon-nav);
+}
+
+.moon{
+  color: var(--icon-moon);
+}
+
+.calculator_mode{
+  
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 5px solid var(--button-box);
+  max-width: 95px;
+  height: 30px;
+  margin: 0 auto 50px auto;
+  border-radius: 20px;
+  background-color: var(--button-box);
+}
+
+.calculator_screen{
+  height: 100px;
+  margin-bottom: 20px;
+
+}
+
+
+.screen{
+  color: var(--icon-nav);
+  width:16.25rem;
+  padding: 0.75rem 0rem;
+  text-align: right;
+  font-size: calc(1.5rem * 1.2 * 1.2);
+  word-wrap: break-word;
+  /* animation: animate 
+                1.5s linear infinite; */
+}
+
+.history{
+  color: var(--icon-nav);
+  width:16.25rem;
+  padding: 0.05rem 0rem;
+  text-align: right;
+  font-size: calc(1.5rem * 1.2 * 1.2);
+  word-wrap: break-word;
+  /* animation: animate 
+                1.5s linear infinite; */
+}
+
+/* @keyframes animate {
+    0% {
+            opacity: 0;
+        }
+  
+    50% {
+            opacity: 0.7;
+       }
+  
+    100% {
+            opacity: 0;
+       }
+} */
+
+.calculator_buttons{
+  height: 319px;
+  padding-top: 25px;
+  background-color: var(--button-box);
+  border-radius: 25px 25px 25px 25px;
+
+}
+
+.calculator_buttons button{
+  height: 50px;
+  width: 50px;
+}
+
+.shape{
+  margin: 0 7px 7px 7px;
+  border: 5px solid var(--primary-screen);
+  border-radius: 15px;
+  background-color: var(--primary-screen);
+  color: var(--icon-nav);
+  box-shadow: 5px 3px 5px var(--box-shadow);
+}
+
+.active{
+  background-color: var(--active);
+}
+
+hr{
+    height: 3px;
+    width: 125px;
+    margin-top: 15px;
+    background-color: var(--primary-screen);
+    border: none;
+}
+
+.keys {
+  color: var(--keys-operator);
+}
+
+
+.operator {
+  color: var(--keys-operator);
+}

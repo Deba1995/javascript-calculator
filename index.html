@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Calculator JS</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/0d92264548.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="calculator_outer">
+      <div class="calculator_top">
+        <div class="calculator_time icon-nav" id="time"></div>
+        <div class="calculator_icons">
+          <i class="fa-solid fa-signal icon-nav"></i>
+          <i class="fa-solid fa-wifi icon-nav"></i>
+          <i class="fa-solid fa-battery-full icon-nav"></i>
+        </div>
+      </div>
+
+      <div class="calculator_mode">
+        <div class="icons" id="light"><i class="fa-solid fa-sun sun"></i></div>
+        <div class="icons" id="dark"><i class="fa-solid fa-moon moon"></i></div>
+      </div>
+
+      <div class="calculator_screen">
+        <div class="history"></div>
+        <div class="screen">_</div>
+      </div>
+
+      <div class="calculator_buttons">
+        <button class="btn clear shape">AC</button>
+        <button class="btn delete shape" data-number="Del">Del</button>
+        <button class="btn percent shape">%</button>
+        <button class="btn operator shape" data-number="/">/</button>
+        <button class="btn number shape" data-number="7">7</button>
+        <button class="btn number shape" data-number="8">8</button>
+        <button class="btn number shape" data-number="9">9</button>
+        <button class="btn operator shape" data-number="*">X</button>
+        <button class="btn number shape" data-number="4">4</button>
+        <button class="btn number shape" data-number="5">5</button>
+        <button class="btn number shape" data-number="6">6</button>
+        <button class="btn operator shape" data-number="-">-</button>
+        <button class="btn number shape" data-number="1">1</button>
+        <button class="btn number shape" data-number="2">2</button>
+        <button class="btn number shape" data-number="3">3</button>
+        <button class="btn operator shape" data-number="+">+</button>
+        <button class="btn negative shape">+/-</button>
+        <button class="btn number shape" data-number="0">0</button>
+        <button class="btn decimal shape" data-number=".">.</button>
+        <button class="btn equal shape">=</button>
+        <hr>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
