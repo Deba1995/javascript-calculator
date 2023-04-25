@@ -89,7 +89,6 @@ function getFirstValue(elem) {
 function getSecondValue(elem) {
   if (firstValue != "" && operator != "") {
     secondValue += elem;
-    console.log(secondValue)
     if (secondValue.length <= 9) {
       if (secondValue.length === 2 && (secondValue[0] + secondValue[1] === "00")) {
         secondValue = "0";
