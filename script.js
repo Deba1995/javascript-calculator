@@ -68,7 +68,8 @@ function getFirstValue(elem) {
   if (firstValue.length <= 9) {
     // console.log(firstValue);
     if (firstValue.length === 2 && (firstValue[0] + firstValue[1] === "00")) {
-      firstValue = "";
+      firstValue = "0";
+      history.innerHTML = "0";
       screen.innerHTML = "0"
     }
     else {
@@ -88,10 +89,11 @@ function getFirstValue(elem) {
 function getSecondValue(elem) {
   if (firstValue != "" && operator != "") {
     secondValue += elem;
+    console.log(secondValue)
     if (secondValue.length <= 9) {
       if (secondValue.length === 2 && (secondValue[0] + secondValue[1] === "00")) {
-        secondValue = "";
-        history.innerHTML += "0";
+        secondValue = "0";
+        history.innerHTML += "";
         screen.innerHTML = "0";
       } else {
         history.innerHTML += elem;
@@ -111,7 +113,9 @@ function getSecondValue(elem) {
 
 //Check result length
 function checkResultLength() {
-  if (screenValue.toString().length >= 8) {
+  console.log(screenValue);
+  console.log(typeof (screenValue))
+  if (screenValue.toString().length > 8) {
     history.innerHTML = screenValue.toString();
     screen.innerHTML = Number.parseFloat(screenValue).toFixed(5);
     firstValue = screenValue.toString();
@@ -187,9 +191,6 @@ buttons.addEventListener('click', (e) => {
   if (e.target.classList.contains('equal')) {
     // console.log(e.target)
     isActive(e.target);
-    if (!history.innerHTML.includes('=')) {
-      history.innerHTML += "=";
-    }
     if (firstValue != "" && operator != "" && isOperator === true && secondValue != "") {
       screen.innerHTML = "_";
       if (operator === "+") {
@@ -199,6 +200,7 @@ buttons.addEventListener('click', (e) => {
       } else if (operator === "*") {
         screenValue = Number.parseFloat(firstValue) * Number.parseFloat(secondValue);
       } else if (operator === "/") {
+
         screenValue = Number.parseFloat(firstValue) / Number.parseFloat(secondValue);
       }
 
