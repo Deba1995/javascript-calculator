@@ -12,7 +12,6 @@ Features:-
 Minor Bugs:
 
 -> issue with +/- key  :(
--> issue with large result length which reults in container overflow :(
 
 Live Demo:
 
