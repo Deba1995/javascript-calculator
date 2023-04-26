@@ -154,6 +154,7 @@ function clear() {
   firstValue = "";
   isFirstValue = false;
   isOperator = false;
+  operator = "";
   secondValue = "";
   isSecondValue = false;
   // operator = "";
