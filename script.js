@@ -59,6 +59,7 @@ let isOperator = false;
 let screenValue = "_";
 let decimalAllowed = true;
 let hist = "";
+let isEqual = false;
 
 
 //Get the first value
@@ -79,7 +80,7 @@ function getFirstValue(elem) {
   }
   else {
     firstValue = firstValue.slice(0, 10);
-    history.innerHTML = firstValue;
+    history.innerHTML += firstValue;
     screen.innerHTML = firstValue;
   }
   // console.log(firstValue);
@@ -102,7 +103,7 @@ function getSecondValue(elem) {
     }
     else {
       secondValue = secondValue.slice(0, 10);
-      history.innerHTML = secondValue;
+      history.innerHTML += secondValue;
       screen.innerHTML = secondValue;
     }
 
@@ -112,23 +113,28 @@ function getSecondValue(elem) {
 
 //Check result length
 function checkResultLength() {
-  if (screenValue.toString().length > 8) {
-    history.innerHTML = screenValue.toString();
-    screen.innerHTML = Number.parseFloat(screenValue).toFixed(5);
-    firstValue = screenValue.toString();
+  let value = screenValue.toString();
+  let maxLength = ""
+  if (value.length > 8) {
+    maxLength = value.slice(0, 10);
+    firstValue = maxLength;
+    history.innerHTML = maxLength;
+    screen.innerHTML = maxLength;
     secondValue = "";
     isOperator = false;
     decimalAllowed = true;
-    // console.log(`---${firstValue}`);
+    isEqual = true;
+    operator = "";
+
   }
   else {
-
-    firstValue = screenValue.toString();
+    firstValue = value;
     history.innerHTML = firstValue;
     screen.innerHTML = firstValue;
     secondValue = "";
     isOperator = false;
     decimalAllowed = true;
+    isEqual = true;
     operator = "";
   }
 
@@ -153,6 +159,7 @@ function clear() {
   // operator = "";
   screenValue = "_";
   decimalAllowed = true;
+  isEqual = false;
 }
 
 //Selecting Each button using event delegation pattern
@@ -160,10 +167,13 @@ function clear() {
 buttons.addEventListener('click', (e) => {
 
   if (e.target.classList.contains('number')) {
-    // console.log(e.target)
     isActive(e.target);
     const id = e.target.dataset.number;
-    if (isFirstValue === false) {
+    if (isEqual && isOperator === false) {
+      clear();
+    }
+
+    if (isFirstValue === false && isEqual === false) {
       getFirstValue(id);
     }
 
@@ -239,10 +249,8 @@ buttons.addEventListener('click', (e) => {
   }
 
   if (e.target.classList.contains('delete')) {
-    // console.log(e.target)
     isActive(e.target);
     if (firstValue != "" && operator != "" && secondValue != "") { // 8 + 33
-      // console.log(secondValue);
       secondValue = secondValue.slice(0, -1); // 8 + 3
       if (secondValue === "") {
         screenValue = "";
@@ -257,11 +265,9 @@ buttons.addEventListener('click', (e) => {
         history.innerHTML = hist;
         screen.innerHTML = screenValue;
       }
-      // screenValue = firstValue + operator + secondValue;
 
     }
     else if (firstValue != "" && operator != "") {
-      // console.log(operator);
       operator = "";
       isOperator = false;
       screenValue = firstValue;
@@ -271,7 +277,6 @@ buttons.addEventListener('click', (e) => {
 
     }
     else if (firstValue != "") {
-      // console.log(firstValue);
       firstValue = firstValue.slice(0, -1);
       if (firstValue === "") {
         screenValue = "_"
@@ -280,7 +285,6 @@ buttons.addEventListener('click', (e) => {
         clear();
       } else {
         screenValue = firstValue;
-        // console.log(history.innerHTML)
         hist = history.innerHTML.slice(0, -1);
         history.innerHTML = hist;
         screen.innerHTML = screenValue;
@@ -294,13 +298,13 @@ buttons.addEventListener('click', (e) => {
   }
 
   if (e.target.classList.contains('decimal')) {
-    // console.log(e.target)
     isActive(e.target);
     if (decimalAllowed === true && firstValue != "" && isOperator == false) {
       if (firstValue.includes('.')) {
         decimalAllowed = false;
       } else {
         firstValue += ".";
+        history.innerHTML = firstValue;
         screen.innerHTML = firstValue;
       }
     }
@@ -309,7 +313,10 @@ buttons.addEventListener('click', (e) => {
       if (secondValue.includes('.')) {
         decimalAllowed = false;
       } else {
+        let i = history.innerHTML.indexOf(operator);
+        hist = history.innerHTML.slice(0, i + 1);
         secondValue += ".";
+        history.innerHTML = hist + secondValue;
         screen.innerHTML = secondValue;
       }
     }
