@@ -11,10 +11,6 @@ Features:-
 -> supports light and dark mode
 -> reponsive for every screen
 
-Minor Bugs:
-
--> issue with +/- key  :(
-
 Live Demo:
 
 https://javascript-calculator-swart.vercel.app/
