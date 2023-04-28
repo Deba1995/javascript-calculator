@@ -217,19 +217,27 @@ buttons.addEventListener('click', (e) => {
   }
 
   if (e.target.classList.contains('negative')) {
-    // console.log(e.target)
     isActive(e.target);
-    screen.innerHTML = "_";
-    if (firstValue != "") {
-      screenValue = -firstValue;
-      firstValue = screenValue;
-    }
 
     if (firstValue != "" && secondValue != "" && operator != "") {
-      screenValue = -screenValue;
+      let temp = history.innerHTML.indexOf(operator)
+      screenValue = -secondValue;
+      secondValue = screenValue;
+      hist = history.innerHTML.slice(0, temp + 1);
+      history.innerHTML = hist + screenValue;
+      screen.innerHTML = screenValue;
     }
-    history.innerHTML += screenValue;
-    screen.innerHTML = screenValue;
+
+    if (firstValue != "" && secondValue === "" && operator === "") {
+      // history.innerHTML = "";
+      screenValue = -firstValue;
+      firstValue = screenValue;
+      history.innerHTML = screenValue;
+      screen.innerHTML = screenValue;
+
+    }
+
+
   }
 
   if (e.target.classList.contains('percent')) {
@@ -239,14 +247,15 @@ buttons.addEventListener('click', (e) => {
     if (firstValue != "") {
       screenValue = firstValue / 100;
       firstValue = screenValue;
+      checkResultLength();
     }
 
     if (firstValue != "" && secondValue != "" && operator != "") {
       screenValue = screenValue / 100;
+      checkResultLength();
     }
 
-    checkResultLength()
-    // screen.innerHTML = screenValue;
+
   }
 
   if (e.target.classList.contains('delete')) {
